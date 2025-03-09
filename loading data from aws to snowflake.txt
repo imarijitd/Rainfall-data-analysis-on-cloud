@@ -1,0 +1,43 @@
+//LOADING DATA FROM AWS TO SNOWFLAKE -
+
+
+//creating database, schema and table -
+CREATE database PowerBI;
+
+create schema PBI_Data;
+
+create table PBI_Dataset (
+Year int,	
+Location string,	
+Area	int,
+Rainfall	float, 
+Temperature	float, 
+Soil_Type string,
+Irrigation	string, 
+Yields	int,
+Humidity	float,
+Crops	string,
+Price	int,
+Season string
+);
+
+select * from PBI_Dataset;
+
+
+//creating staging object -
+create stage PowerBI.PBI_Data.pbi_stage
+url = 's3://powerbi.project01'
+storage_integration = PBI_Integration
+
+//desc stage s1
+
+//drop stage s1;
+
+
+//copying data from staging object to table -
+copy into PBI_Dataset 
+from @pbi_stage
+file_format = (type=csv field_delimiter=',' skip_header=1)
+on_error = 'continue'
+
+list @pbi_stage
