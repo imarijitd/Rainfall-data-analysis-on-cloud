@@ -15,8 +15,11 @@ Goal: Create a structured workspace within Snowflake and organize project folder
 ### 2. Creating AWS S3 bucket
 Goal : We need to create AWS S3 bucket and load data into it. Follow the below steps -
 a.) Go to AWS----> Options----> All Services----> S3, and click on "Create Bucket" option, and load data into the bucket after bucket creation.
+
 b.) Create Role in AWS by going to option IAM----> Roles.
+
 c.) Go to Snowflake and create integration object for connecting Snowflake with AWS.
+
 d.) Go to AWS and replace 'USER_ARN' and 'EXTERNAL_ID' fields with the values received in Snowflake after integration object creation.
     Follow : AWS----> IAM----> Roles----> Edit Roles----> Replace the values----> Save
 
